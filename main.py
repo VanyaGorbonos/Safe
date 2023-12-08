@@ -49,9 +49,9 @@ def register():
         sha256.update(data.encode('utf-8'))
         secret = sha256.hexdigest()
 
-        # Проверка пароля на соответствие требованиям
-        if not re.fullmatch(r'\d{5}', password):
-            flash('Пароль должен состоять из 5 цифр.')
+        password_pattern = r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$'
+        if not re.fullmatch(password_pattern, password):
+            flash('Пароль должен быть не менее 8 символов и содержать к		как минимум одну заглавную букву, одну строчную букву, одну цифру и один 	специальный символ.')
             return redirect(url_for('register'))
 
 
