@@ -87,12 +87,15 @@ def login():
 @app.route('/user/<username>')
 def user_profile(username):
     if 'username' in session:
-        db = get_db()
-        user = db.execute('SELECT * FROM users WHERE username = ?', (username,)).fetchone()
-        if user:
-            return render_template('user_profile.html', user=user)
+        if session['username'] == username:
+            db = get_db()
+            user = db.execute('SELECT * FROM users WHERE username = ?', (username,)).fetchone()
+            if user:
+                return render_template('user_profile.html', user=user)
+            else:
+                abort(404)  # если пользователь не найден
         else:
-            abort(404)  # если пользователь не найден
+            abort(403)  # доступ запрещен
     return redirect(url_for('login'))
 
 
