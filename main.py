@@ -68,10 +68,10 @@ def login():
         username = request.form['username']
         password = request.form['password']
 
-        # Уязвимый SQL запрос
-        query = f"SELECT * FROM users WHERE username = '{username}' AND password = '{password}'"
+        # Защищенный SQL запрос с использованием параметризованных запросов
+        query = "SELECT * FROM users WHERE username = ? AND password = ?"
         db = get_db()
-        user = db.execute(query).fetchone()
+        user = db.execute(query, (username, password)).fetchone()
 
         # Проверка, был ли найден пользователь
         if user:
