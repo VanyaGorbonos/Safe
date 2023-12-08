@@ -1,7 +1,8 @@
 import hashlib
 import subprocess 
 import re
-from flask import Flask, render_template, request, redirect, url_for, session, g, abort, send_file, flash
+from werkzeug.utils import secure_filename
+from flask import Flask, render_template, request, redirect, url_for, session, g, abort, send_file, flash, send_from_directory
 import sqlite3
 import os
 
@@ -122,9 +123,8 @@ def ping():
 def load_image():
     filename = request.args.get('filename')
     if filename:
-
-        filepath = './static/images/' + filename
-        return send_file(filepath)
+        filename = secure_filename(filename)
+        return send_from_directory('./static/images/', filename)
     else:
         return 'Файл не найден', 404
 
