@@ -1,0 +1,127 @@
+/* Общие стили */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+header, footer {
+    background-color: #FFFF00;
+    color: #444;
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #5a5a5a; 
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    color: #333; 
+}
+
+main {
+    padding: 20px;
+    min-height: 400px;
+}
+
+/* Стили для футера */
+footer {
+    font-size: 0.8em;
+    border-top: 1px solid #e6e6e6;
+    margin-top: 20px;
+}
+
+/* Стилизация кнопок */
+.filter-buttons a {
+    text-decoration: none;
+    padding: 8px 15px;
+    background-color: #e6e6e6;
+    color: #333;
+    border-radius: 4px;
+    margin-right: 5px;
+}
+
+.filter-buttons a:hover {
+    background-color: #ffd9b3;
+    color: #fff;
+}
+
+.image-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.image-gallery div {
+    margin: 10px;
+    text-align: center;
+}
+
+.image-gallery img {
+    border: 3px solid #ffd9b3;
+    border-radius: 8px;
+    max-width: 100%;
+    height: auto;
+}
+
+html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+form {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+form input[type="text"], form input[type="password"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+form button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #ffd9b3;
+    color: white;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #ffbb77;
+}
+
+p, div {
+    text-align: center;
+    color: #b05656;
+}

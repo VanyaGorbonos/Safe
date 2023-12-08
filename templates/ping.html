@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Ping{% endblock %}
+
+{% block content %}
+   <h1>Ping Utility</h1>
+    <form method="POST">
+        <label for="ip_address">Введите IP-адрес</label><br>
+        <input type="text" id="ip_address" name="ip_address" placeholder="127.0.0.1"><br>
+        <input type="submit" value="Пинговать">
+    </form>
+    {% if result %}
+        <h2>Результаты пинга:</h2>
+        <pre>{{ result }}</pre>
+    {% endif %}
+{% endblock %}

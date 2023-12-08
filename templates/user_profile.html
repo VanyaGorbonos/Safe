@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}User Profile{% endblock %}
+
+{% block content %}
+    <h1>Welcome, {{ user[1] }}!</h1>
+    <p>Role: {{ user[3] }}</p>
+    <p>Secret: {{ user[-1] }}</p>
+    <p>Status: {{ user[4] | safe}}</p>
+    <form method="POST" action="{{ url_for('set_status') }}">
+        <input type="text" name="status" placeholder="Set your status">
+        <button type="submit">Update Status</button>
+    </form>
+{% endblock %}

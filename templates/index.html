@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <h1>MR.ROBOT HERE</h1>
+    <h2>Галерея изображений</h2>
+
+    <div class="filter-buttons">
+        <a href="{{ url_for('index', category='hero') }}">Герои</a>
+        <a href="{{ url_for('index', category='plot') }}">Сюжет</a>
+        <a href="{{ url_for('index', category='episode') }}">Эпизоды</a>
+    </div>
+
+    <div class="image-gallery">
+        {% for image in images %}
+            <div>
+                <h2>{{ image[2] }}</h2>
+                <img src="{{ url_for('load_image', filename=image[3]) }}" alt="{{ image[4] }}" width="200" height="200">
+                <p>{{ image[4] }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
