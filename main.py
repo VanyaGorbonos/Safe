@@ -1,4 +1,5 @@
 import hashlib
+import subprocess 
 import re
 from flask import Flask, render_template, request, redirect, url_for, session, g, abort, send_file, flash
 import sqlite3
@@ -100,13 +101,19 @@ def user_profile(username):
 
 
 @app.route('/ping', methods=['GET', 'POST'])
+
+
 def ping():
     result = ""
     if request.method == 'POST':
         ip_address = request.form.get('ip_address')
 
-        # выполнение команды ping с пользовательским вводом
-        result = os.popen(f'ping -c 4 {ip_address}').read()
+        # Проверка ввода пользователя
+        if ip_address and all(c.isalnum() or c in {'.', ':'} for c in ip_address):
+            # Безопасное выполнение команды ping с пользовательским вводом
+            result = subprocess.run(['ping', '-c', '4', ip_address], capture_output=True, text=True).stdout
+        else:
+            result = "Некорректный IP-адрес."
 
     return render_template('ping.html', result=result)
 
